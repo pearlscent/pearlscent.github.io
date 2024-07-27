@@ -16,6 +16,11 @@ body {
 .carousel {
   margin-bottom: 4rem;
 }
+.carousel-inner img {
+  width: 100%; /* Set width to 100% */
+  margin: auto;
+}
+
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   bottom: 3rem;
