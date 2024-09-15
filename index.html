@@ -176,11 +176,19 @@
             <svg class="bd-placeholder-img card-img-top" width="100%" height="350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
               <title>Placeholder</title>
               <rect width="100%" height="100%" fill="#55595c"/>
-              <!-- <image onclick="window.open('/products/FCJ-215006.html','_self')" href="/resource/400x400/IMG-20240804-WA0018.jpg" width="100%" /> -->
+
+              <!-- Opens resource in same tab -->
+              <image onclick="window.open('/products/FCJ-215006.html','_self')" href="/resource/400x400/IMG-20240804-WA0018.jpg" width="100%" />
+
+              <!-- Opens resource in same tab but back button not working. Replaces the page entirely. -->
               <!-- <image onclick="window.location.replace('/products/FCJ-215006.html')" href="/resource/400x400/IMG-20240804-WA0018.jpg" width="100%" /> -->
 
               <!-- Opens resource in new tab -->
-              <image id="FCJ-215006" onclick="redirect_product_page(id)" href="/resource/400x400/IMG-20240804-WA0018.jpg" width="100%" />
+              <!-- <image onclick="window.open('/products/FCJ-215006.html')" href="/resource/400x400/IMG-20240804-WA0018.jpg" width="100%" /> -->
+
+              <!-- Not working in IOS device -->
+              <!-- <image id="FCJ-215006" onclick="redirect_product_page(id)" href="/resource/400x400/IMG-20240804-WA0018.jpg" width="100%" /> -->
+
               <!-- <text x="50%" y="50%" fill="#eceeef" dy=".3em">New Arrival</text> -->
             </svg>
 
