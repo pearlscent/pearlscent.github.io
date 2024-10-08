@@ -2,10 +2,10 @@
 function redirect_product_page(id)
 {
     if(id=="FCJ-215006"){
-        location.href = "/products/FCJ-215006.html";
+        window.location.href = "/products/FCJ-215006.html";
     }
     if(id=="FPJ-215006"){
-        location.href = "/products/FPJ-215006.html";
+        window.location = "/products/FPJ-215006.html";
     }
     if(id=="FPJ-235006"){
         location.href = "/products/FPJ-235006.html";
