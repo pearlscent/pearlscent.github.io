@@ -37,9 +37,15 @@ function addProduct(event) {
 
     const productName = document.getElementById('product-name').value;
     const productPrice = parseFloat(document.getElementById('product-price').value);
+    const productImageUrl = document.getElementById('product-image-url').value;
 
     if (!productName || isNaN(productPrice) || productPrice <= 0) {
         alert('Please enter a valid product name and price.');
+        return;
+    }
+
+    if (!productImageUrl || !isValidImageUrl(productImageUrl)) {
+        alert('Please enter a valid image URL.');
         return;
     }
 
@@ -49,14 +55,20 @@ function addProduct(event) {
     const newProduct = {
         id: productId,
         name: productName,
-        price: productPrice
+        price: productPrice,
+        image: productImageUrl // Save the image URL
     };
 
     products.push(newProduct);
     localStorage.setItem('products', JSON.stringify(products));
     document.getElementById('add-product-form').reset();
-    displayProducts();
+    displayProducts(true);
     alert(`${productName} has been added.`);
+}
+
+// Helper function to validate image URL
+function isValidImageUrl(url) {
+    return /\.(jpg|jpeg|png|gif|webp)$/i.test(url);
 }
 
 // Function to display products based on the current page
@@ -74,6 +86,7 @@ function displayProducts(isAdmin = false) {
 
     productList.innerHTML = paginatedProducts.map(product => `
         <div class="${isAdmin ? 'adminProduct' : 'product'}" data-id="${product.id}">
+            <img src="${product.image}" alt="${product.name}" style="width: 100px; height: 100px;">
             <h2>${product.name}</h2>
             <p>Price: $${product.price}</p>
             ${isAdmin ? `

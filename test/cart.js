@@ -14,6 +14,7 @@ function displayCartItems() {
     // Generate HTML for each cart item
     cartItemsContainer.innerHTML = cart.map(item => `
         <div class="cart-item" data-id="${item.id}">
+            <img src="${item.image}" alt="${item.name}" style="width: 100px; height: 100px;">
             <h2>${item.name}</h2>
             <p>Price: $${item.price}</p>
             <label>Quantity: </label>
