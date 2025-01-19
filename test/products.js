@@ -13,26 +13,21 @@ const itemsPerPage = 9; // Number of products to show per page
 let currentPage = 1; // Current page number
 
 // Function to add sample products to localStorage
-function loadSampleProducts() {
-    let products = JSON.parse(localStorage.getItem('products')) || [];
+async function loadSampleProducts() {
+    try {
+        const response = await fetch('/productsData.json'); // Adjust the path as needed
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const sampleProducts = await response.json();
 
-    if (products.length === 0) {
-        const sampleProducts = [
-            { id: 1, name: "Apple", price: 1.5 },
-            { id: 2, name: "Banana", price: 0.5 },
-            { id: 3, name: "Orange", price: 0.75 },
-            { id: 4, name: "Milk", price: 2.0 },
-            { id: 5, name: "Bread", price: 1.25 },
-            { id: 6, name: "Cheese", price: 2.5 },
-            { id: 7, name: "Butter", price: 3.0 },
-            { id: 8, name: "Eggs", price: 1.2 },
-            { id: 9, name: "Juice", price: 1.8 },
-            { id: 10, name: "Yogurt", price: 1.1 },
-            { id: 11, name: "Honey", price: 2.7 },
-            { id: 12, name: "Cereal", price: 3.2 }
-        ];
-
-        localStorage.setItem('products', JSON.stringify(sampleProducts));
+        let products = JSON.parse(localStorage.getItem('products')) || [];
+        if (products.length === 0) {
+            localStorage.setItem('products', JSON.stringify(sampleProducts));
+            console.log('Sample products loaded successfully.');
+        }
+    } catch (error) {
+        console.error('Error loading sample products:', error);
     }
 }
 
@@ -91,29 +86,29 @@ function displayProducts(isAdmin = false) {
         </div>
     `).join('');
 
-    displayPagination(products.length);
+    displayPagination(products.length, isAdmin);
 }
 
 // Function to display pagination controls
-function displayPagination(totalItems) {
+function displayPagination(totalItems, isAdmin = false) {
     const paginationContainer = document.getElementById('pagination');
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
     paginationContainer.innerHTML = `
-        <button onclick="prevPage()" ${currentPage === 1 ? 'disabled' : ''}>Previous</button>
+        <button onclick="prevPage(${isAdmin})" ${currentPage === 1 ? 'disabled' : ''}>Previous</button>
         Page ${currentPage} of ${totalPages}
-        <button onclick="nextPage()" ${currentPage === totalPages ? 'disabled' : ''}>Next</button>
+        <button onclick="nextPage(${isAdmin})" ${currentPage === totalPages ? 'disabled' : ''}>Next</button>
     `;
 }
 
-function nextPage() {
+function nextPage(isAdmin = false) {
     currentPage++;
-    displayProducts();
+    displayProducts(isAdmin);
 }
 
-function prevPage() {
+function prevPage(isAdmin = false) {
     currentPage--;
-    displayProducts();
+    displayProducts(isAdmin);
 }
 
 function addToCart(productId) {

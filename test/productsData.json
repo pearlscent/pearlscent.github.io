@@ -1,0 +1,17 @@
+#JSON File (productsData.json)
+#Create a productsData.json file in your project's directory. For example, place it in a data folder:
+
+[
+    { "id": 1, "name": "Apple", "price": 1.5 },
+    { "id": 2, "name": "Banana", "price": 0.5 },
+    { "id": 3, "name": "Orange", "price": 0.75 },
+    { "id": 4, "name": "Milk", "price": 2.0 },
+    { "id": 5, "name": "Bread", "price": 1.25 },
+    { "id": 6, "name": "Cheese", "price": 2.5 },
+    { "id": 7, "name": "Butter", "price": 3.0 },
+    { "id": 8, "name": "Eggs", "price": 1.2 },
+    { "id": 9, "name": "Juice", "price": 1.8 },
+    { "id": 10, "name": "Yogurt", "price": 1.1 },
+    { "id": 11, "name": "Honey", "price": 2.7 },
+    { "id": 12, "name": "Cereal", "price": 3.2 }
+]
