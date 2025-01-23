@@ -15,7 +15,9 @@ let currentPage = 1; // Current page number
 // Function to add sample products to localStorage
 async function loadSampleProducts() {
     try {
-        const response = await fetch('/productsData.json'); // Adjust the path as needed
+        //Ensure JSON file is in same directory as HTML
+        //Use relative path like ./productsData.json or productsData.json
+        const response = await fetch('./productsData.json'); // Adjust the path as needed
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
