@@ -2,3 +2,32 @@
 .nowrap {
     white-space: nowrap;
   }
+
+  .whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  .whatsapp-float a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+  }
+  .whatsapp-float a:hover {
+    background-color: #1DA851;
+  }
+  .whatsapp-float i {
+    font-size: 28px;
+    color: white;
+  }
+  .whatsapp-float img {
+    width: 60px;
+    height: 60px;
+  }
